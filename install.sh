@@ -2,9 +2,6 @@
 
 DOTFILES_FOLDER=$HOME/.dotfiles
 
-git submodule init $DOTFILES_FOLDER
-git submodule update $DOTFILES_FOLDER
-
 ##############################################
 # ZSH
 ##############################################
