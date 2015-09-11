@@ -16,7 +16,8 @@ set nocompatible
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'DavidEGx/ctrlp-smarttabs'
   Plug 'dantler/vim-alternate'
-  Plug 'Raimondi/delimitMate'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'othree/xml.vim'
   Plug 'bling/vim-airline'
   Plug 'kien/rainbow_parentheses.vim'
   Plug 'michaeljsmith/vim-indent-object'
@@ -46,6 +47,8 @@ set nocompatible
   Plug 'unblevable/quick-scope'
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-obsession'
+  Plug 'bronson/vim-trailing-whitespace'
+  Plug 'svermeulen/vim-easyclip'
 
   call plug#end()
 
@@ -122,11 +125,6 @@ set nocompatible
         \ --ignore "**/*.pyc"
         \ -g ""'
   " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch'  }
-
-  " DelimitMate
-  let delimitMate_expand_space = 1
-  let delimitMate_expand_cr = 1
-  let delimitMate_jump_expansion = 1
 
   " " EasyMotion
   " let g:EasyMotion_keys = 'fjdksewoavn'
@@ -249,8 +247,6 @@ set nocompatible
     nnoremap <leader>ma :Make<CR>
 
   " Insert Mode
-    " DelimitMate
-    imap <C-Space> <Plug>delimitMateS-Tab
 
     " make YCM compatible with UltiSnips (using supertab)
     let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
