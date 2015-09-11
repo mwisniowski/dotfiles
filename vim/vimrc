@@ -44,8 +44,8 @@ set nocompatible
   Plug 'SirVer/ultisnips'
   Plug 'Valloric/YouCompleteMe'
   Plug 'unblevable/quick-scope'
-  Plug 'FelikZ/ctrl-py-matcher'
   Plug 'junegunn/vim-easy-align'
+  Plug 'tpope/vim-obsession'
 
   call plug#end()
 
@@ -226,7 +226,7 @@ set nocompatible
     nnoremap <silent> ,dp :diffput<CR>
 
     " RainbowParentheses
-    nmap ,rt :RainbowParenthesesToggleAll<CR>
+    nmap <leader>rt :RainbowParenthesesToggleAll<CR>
 
     nnoremap <Leader>p :CtrlPBufTag<CR>
 
@@ -245,6 +245,8 @@ set nocompatible
     nnoremap <silent> <leader>gp :Git push<CR>
     nnoremap <silent> <leader>gw :Gwrite<CR>
     nnoremap <silent> <leader>gbr :Git branch<CR>
+
+    nnoremap <leader>ma :Make<CR>
 
   " Insert Mode
     " DelimitMate
