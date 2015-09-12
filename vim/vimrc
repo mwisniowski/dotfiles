@@ -103,6 +103,7 @@ set nocompatible
   set wrap
   set linebreak
   set mouse=a
+  set clipboard=unnamed
   " }}}
 
   " Airline
