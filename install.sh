@@ -30,3 +30,9 @@ vim +PlugInstall +qall
 ##############################################
 
 ln -sf $DOTFILES_FOLDER/tmux/tmux.conf $HOME/.tmux.conf
+
+##############################################
+# Fzf
+##############################################
+
+$DOTFILES_FOLDER/fzf/install
