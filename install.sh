@@ -6,7 +6,7 @@ DOTFILES_FOLDER=$HOME/.dotfiles
 # Bash
 ##############################################
 ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash_it
-ln -sf $DOTFILES_FOLDER/basH/bashrc $HOME/.bashrc
+ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
 
 ##############################################
 # Vim
