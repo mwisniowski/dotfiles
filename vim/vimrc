@@ -48,7 +48,7 @@ set nocompatible
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-obsession'
   Plug 'bronson/vim-trailing-whitespace'
-  Plug 'svermeulen/vim-easyclip'
+  Plug 'michaeljsmith/vim-indent-object'
 
   call plug#end()
 
@@ -103,7 +103,7 @@ set nocompatible
   set wrap
   set linebreak
   set mouse=a
-  " }}}
+  set clipboard=unnamed
 
   " Airline
   " let g:airline_theme = 'molokai'
