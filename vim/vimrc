@@ -49,6 +49,7 @@ set nocompatible
   Plug 'tpope/vim-obsession'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'svermeulen/vim-easyclip'
 
   call plug#end()
 
@@ -80,6 +81,7 @@ set nocompatible
   set smarttab
   set shiftwidth=2
   set tabstop=2
+  set softtabstop=2
   set ai
   set si
 
@@ -105,8 +107,10 @@ set nocompatible
   set mouse=a
   set clipboard=unnamed
 
+"""""""""""""""""""""""""""
+" Plugin-Specific
+"""""""""""""""""""""""""""
   " Airline
-  " let g:airline_theme = 'molokai'
   let g:airline_powerline_fonts = 1
 
   " Colorscheme
@@ -125,19 +129,6 @@ set nocompatible
         \ --ignore "**/*.pyc"
         \ -g ""'
   " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch'  }
-
-  " " EasyMotion
-  " let g:EasyMotion_keys = 'fjdksewoavn'
-  " let g:EasyMotion_do_shade = 1
-  " let g:EasyMotion_do_mapping = 1
-  " let g:EasyMotion_grouping = 1
-  " hi link EasyMotionTarget Type
-  " hi link EasyMotionShade Comment
-
-  " NerdTree
-  let NERDTreeMinimalUI = 1
-  let NERDTreeDirArrows = 1
-  let g:NERDTreeWinSize = 30
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -194,6 +185,7 @@ set nocompatible
 
   " Easytags
   let g:easytags_async = 1
+  let g:easytags_suppress_ctags_warning = 1
 
 """""""""""""""""""""""""""
 " Keymaps
@@ -232,7 +224,7 @@ set nocompatible
     vmap <Enter> <Plug>(EasyAlign)
 
     " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-    nmap ga <Plug>(EasyAlign))
+    " nmap ga <Plug>(EasyAlign))
 
     nnoremap <silent> <leader>gs :Gstatus<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -245,6 +237,8 @@ set nocompatible
     nnoremap <silent> <leader>gbr :Git branch<CR>
 
     nnoremap <leader>ma :Make<CR>
+
+    nnoremap <leader>gu :GundoToggle<CR>
 
   " Insert Mode
 

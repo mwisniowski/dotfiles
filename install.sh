@@ -3,10 +3,10 @@
 DOTFILES_FOLDER=$HOME/.dotfiles
 
 ##############################################
-# ZSH
+# Bash
 ##############################################
-ln -sf $DOTFILES_FOLDER/oh-my-zsh $HOME/.omz
-cp $DOTFILES_FOLDER/zsh/atlas.zsh-theme $DOTFILES_FOLDER/oh-my-zsh/custom
+ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash_it
+ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
 
 ##############################################
 # Vim
@@ -30,3 +30,9 @@ vim +PlugInstall +qall
 ##############################################
 
 ln -sf $DOTFILES_FOLDER/tmux/tmux.conf $HOME/.tmux.conf
+
+##############################################
+# Fzf
+##############################################
+
+# $DOTFILES_FOLDER/fzf/install
