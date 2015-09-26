@@ -50,6 +50,7 @@ set nocompatible
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'svermeulen/vim-easyclip'
+  Plug 'sjl/gundo.vim'
 
   call plug#end()
 
