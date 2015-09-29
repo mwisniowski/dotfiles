@@ -49,7 +49,6 @@ set nocompatible
   Plug 'tpope/vim-obsession'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'svermeulen/vim-easyclip'
   Plug 'sjl/gundo.vim'
 
   call plug#end()
@@ -113,6 +112,9 @@ set nocompatible
 """""""""""""""""""""""""""
   " Airline
   let g:airline_powerline_fonts = 1
+  let g:airline#extensions#hunks#enabled = 0
+  let g:airline#extensions#branch#format = 1
+  let g:airline#extensions#tagbar#enabled = 0
 
   " Colorscheme
   colorscheme solarized
