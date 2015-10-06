@@ -13,7 +13,7 @@ set nocompatible
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'kien/ctrlp.vim'
   Plug 'DavidEGx/ctrlp-smarttabs'
   Plug 'dantler/vim-alternate'
   Plug 'jiangmiao/auto-pairs'
@@ -121,7 +121,8 @@ set nocompatible
   " CtrlP
   " let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'], }
   let g:ctrlp_extensions = [ 'smarttabs' ]
-  let g:ctrlp_working_path_mode = 'a'
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_root_markers = [ 'CMakeLists.txt' ]
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
         \ --ignore .git
         \ --ignore .svn
@@ -200,7 +201,7 @@ set nocompatible
 
     " tComment
     " comment paragraph
-    nmap <silent> gcp <c-_>p
+    " nmap <silent> gcp <c-_>p
 
     " Window navigation
     nnoremap <C-h> <C-w><C-h>
@@ -208,9 +209,9 @@ set nocompatible
     nnoremap <C-k> <C-w><C-k>
     nnoremap <C-l> <C-w><C-l>
 
-    " Ag
-    nmap <leader>ag :Ag ""<Left>
-    nmap <leader>af :AgFile ""<Left>
+    " " Ag
+    " nmap <leader>ag :Ag ""<Left>
+    " nmap <leader>af :AgFile ""<Left>
 
     " fugitive.git
     nnoremap <silent> ,dg :diffget<CR>
