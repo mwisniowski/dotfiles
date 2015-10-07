@@ -9,6 +9,12 @@ ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash_it
 ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
 
 ##############################################
+# Tmux
+##############################################
+
+ln -sf $DOTFILES_FOLDER/tmux/tmux.conf $HOME/.tmux.conf
+
+##############################################
 # Vim
 ##############################################
 
@@ -24,12 +30,6 @@ ln -sf $DOTFILES_FOLDER/vim/vimrc $HOME/.vimrc
 ln -sf $DOTFILES_FOLDER/vim/UltiSnips $VIM_FOLDER/
 
 vim +PlugInstall +qall
-
-##############################################
-# Tmux
-##############################################
-
-ln -sf $DOTFILES_FOLDER/tmux/tmux.conf $HOME/.tmux.conf
 
 ##############################################
 # Fzf
