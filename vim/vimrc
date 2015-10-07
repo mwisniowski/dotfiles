@@ -5,7 +5,6 @@ set nocompatible
 """""""""""""""""""""""""""
   call plug#begin('~/.vim/bundle')
   " Load vundle plugins
-  Plug 'tpope/vim-abolish'
   Plug 'tpope/vim-dispatch'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-markdown'
@@ -19,14 +18,11 @@ set nocompatible
   Plug 'jiangmiao/auto-pairs'
   Plug 'othree/xml.vim'
   Plug 'bling/vim-airline'
-  Plug 'kien/rainbow_parentheses.vim'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'vim-scripts/SearchComplete'
   Plug 'vim-scripts/argtextobj.vim'
   Plug 'kana/vim-textobj-user'
   Plug 'kana/vim-textobj-function'
   Plug 'glts/vim-textobj-comment'
-  Plug 'godlygeek/tabular'
   Plug 'rking/ag.vim'
   Plug 'tomtom/tcomment_vim'
   Plug 'danro/rename.vim'
@@ -40,7 +36,6 @@ set nocompatible
   Plug 'octol/vim-cpp-enhanced-highlight'
   Plug 'ervandew/supertab'
   Plug 'christoomey/vim-tmux-navigator'
-  Plug 'majutsushi/tagbar'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'SirVer/ultisnips'
   Plug 'Valloric/YouCompleteMe'
@@ -48,8 +43,8 @@ set nocompatible
   Plug 'junegunn/vim-easy-align'
   Plug 'tpope/vim-obsession'
   Plug 'bronson/vim-trailing-whitespace'
-  Plug 'michaeljsmith/vim-indent-object'
   Plug 'sjl/gundo.vim'
+  Plug 'taketwo/vim-ros'
 
   call plug#end()
 
@@ -86,7 +81,7 @@ set nocompatible
   set si
 
   set laststatus=2
-  set title
+  set notitle
 
   set foldmethod=indent
   set nofoldenable " disable default folding
@@ -123,7 +118,7 @@ set nocompatible
   " CtrlP
   " let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'], }
   let g:ctrlp_extensions = [ 'smarttabs' ]
-  let g:ctrlp_working_path_mode = 'a'
+  let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
         \ --ignore .git
         \ --ignore .svn
@@ -131,7 +126,7 @@ set nocompatible
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch'  }
+  let g:ctrlp_root_markers = [ 'CMakeLists.txt' ]
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -161,9 +156,6 @@ set nocompatible
     \ 'c' : ['->', '.'],
   \ }
 
-  " ROS
-  au BufNewFile,BufRead *.launch set filetype=xml
-
   " Quickscope
   let g:qs_enable = 0
   let g:qs_enable_char_list = [ 'f', 'F', 't', 'T'  ]
@@ -189,6 +181,11 @@ set nocompatible
   " Easytags
   let g:easytags_async = 1
   let g:easytags_suppress_ctags_warning = 1
+
+  " ROS
+  let g:ros_make = 'current'
+  let g:ros_build_system = 'catkin-tools'
+  let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
 
 """""""""""""""""""""""""""
 " Keymaps
@@ -242,6 +239,8 @@ set nocompatible
     nnoremap <leader>ma :Make<CR>
 
     nnoremap <leader>gu :GundoToggle<CR>
+
+    map <leader>f :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
 
   " Insert Mode
 
