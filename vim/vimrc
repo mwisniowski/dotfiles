@@ -16,7 +16,6 @@ set nocompatible
   Plug 'dantler/vim-alternate'
   Plug 'jiangmiao/auto-pairs'
   Plug 'bling/vim-airline'
-  Plug 'kien/rainbow_parentheses.vim'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'vim-scripts/argtextobj.vim'
   Plug 'kana/vim-textobj-user'
@@ -40,6 +39,7 @@ set nocompatible
   Plug 'junegunn/vim-easy-align'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'sjl/gundo.vim'
+  Plug 'taketwo/vim-ros'
   Plug 'scrooloose/syntastic'
 
   call plug#end()
@@ -141,7 +141,6 @@ set nocompatible
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch'  }
   let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 
   " Tex
@@ -198,6 +197,11 @@ set nocompatible
   let g:easytags_async = 1
   let g:easytags_suppress_ctags_warning = 1
 
+  " ROS
+  let g:ros_make = 'current'
+  let g:ros_build_system = 'catkin-tools'
+  let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
+
   " Syntastic
   set statusline+=%#warningmsg#
   set statusline+=%{SyntasticStatuslineFlag()}
@@ -228,7 +232,7 @@ set nocompatible
     nnoremap <C-k> <C-w><C-k>
     nnoremap <C-l> <C-w><C-l>
 
-    " " Ag
+    " Ag
     " nmap <leader>ag :Ag ""<Left>
     " nmap <leader>af :AgFile ""<Left>
 
@@ -260,6 +264,8 @@ set nocompatible
     nnoremap <leader>ma :Make<CR>
 
     nnoremap <leader>gu :GundoToggle<CR>
+
+    map <leader>f :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
 
   " Insert Mode
 
