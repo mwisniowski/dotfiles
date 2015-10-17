@@ -97,6 +97,7 @@ set nocompatible
   set linebreak
   set mouse=a
   set clipboard=unnamed
+  set diffopt+=vertical
 
 """""""""""""""""""""""""""
 " Plugin-Specific
