@@ -13,7 +13,7 @@ set nocompatible
   Plug 'tpope/vim-fugitive'
   Plug 'kien/ctrlp.vim'
   Plug 'dantler/vim-alternate'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'Raimondi/delimitMate'
   Plug 'bling/vim-airline'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'vim-scripts/argtextobj.vim'
@@ -40,6 +40,7 @@ set nocompatible
   Plug 'sjl/gundo.vim'
   Plug 'taketwo/vim-ros'
   " Plug 'scrooloose/syntastic'
+  Plug 'rhysd/conflict-marker.vim'
 
   call plug#end()
 
@@ -97,6 +98,9 @@ set nocompatible
   set mouse=a
   set clipboard=unnamed
   set hidden
+  set diffopt+=vertical
+  set splitbelow
+  set splitright
 
 """""""""""""""""""""""""""
 " Plugin-Specific
@@ -119,6 +123,11 @@ set nocompatible
       \ 'S'  : 'S',
       \ '' : 'S',
       \ }
+  " Enable the list of buffers
+  let g:airline#extensions#tabline#enabled = 1
+
+  " Show just the filename
+  let g:airline#extensions#tabline#fnamemod = ':t'"
 
   " Colorscheme
   colorscheme solarized
@@ -135,7 +144,7 @@ set nocompatible
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  let g:ctrlp_root_markers = [ 'CMakeLists.txt' ]
+  let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -205,6 +214,9 @@ set nocompatible
   " let g:syntastic_auto_loc_list = 1
   " let g:syntastic_check_on_open = 1
   " let g:syntastic_check_on_wq = 0
+
+  " DelimitMate
+  let delimitMate_balance_matchpairs = 1
 
 """""""""""""""""""""""""""
 " Keymaps
