@@ -12,7 +12,6 @@ set nocompatible
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
   Plug 'kien/ctrlp.vim'
-  Plug 'DavidEGx/ctrlp-smarttabs'
   Plug 'dantler/vim-alternate'
   Plug 'jiangmiao/auto-pairs'
   Plug 'bling/vim-airline'
@@ -40,7 +39,7 @@ set nocompatible
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'sjl/gundo.vim'
   Plug 'taketwo/vim-ros'
-  Plug 'scrooloose/syntastic'
+  " Plug 'scrooloose/syntastic'
 
   call plug#end()
 
@@ -70,9 +69,9 @@ set nocompatible
 
   set expandtab
   set smarttab
-  set shiftwidth=2
-  set tabstop=2
-  set softtabstop=2
+  set shiftwidth=4
+  set tabstop=4
+  set softtabstop=4
   set ai
   set si
 
@@ -97,6 +96,7 @@ set nocompatible
   set linebreak
   set mouse=a
   set clipboard=unnamed
+  set hidden
 
 """""""""""""""""""""""""""
 " Plugin-Specific
@@ -126,7 +126,6 @@ set nocompatible
 
   " CtrlP
   " let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'], }
-  let g:ctrlp_extensions = [ 'smarttabs' ]
   let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_root_markers = [ 'CMakeLists.txt' ]
   let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
@@ -198,14 +197,14 @@ set nocompatible
   let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
 
   " Syntastic
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+  " let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+  " let g:syntastic_check_on_open = 1
+  " let g:syntastic_check_on_wq = 0
 
 """""""""""""""""""""""""""
 " Keymaps
