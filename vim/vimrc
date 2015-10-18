@@ -14,7 +14,7 @@ set nocompatible
   Plug 'kien/ctrlp.vim'
   Plug 'DavidEGx/ctrlp-smarttabs'
   Plug 'dantler/vim-alternate'
-  Plug 'jiangmiao/auto-pairs'
+  Plug 'Raimondi/delimitMate'
   Plug 'bling/vim-airline'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'vim-scripts/argtextobj.vim'
@@ -98,6 +98,8 @@ set nocompatible
   set mouse=a
   set clipboard=unnamed
   set diffopt+=vertical
+  set splitbelow
+  set splitright
 
 """""""""""""""""""""""""""
 " Plugin-Specific
@@ -212,6 +214,9 @@ set nocompatible
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
+
+  " DelimitMate
+  let delimitMate_balance_matchpairs = 1
 
 """""""""""""""""""""""""""
 " Keymaps
