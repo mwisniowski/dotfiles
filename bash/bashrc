@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 export EDITOR='vim'
+export TERM='screen-256color'
 
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash_it"
