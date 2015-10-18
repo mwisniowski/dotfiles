@@ -41,6 +41,7 @@ set nocompatible
   Plug 'sjl/gundo.vim'
   Plug 'taketwo/vim-ros'
   Plug 'scrooloose/syntastic'
+  Plug 'rhysd/conflict-marker.vim'
 
   call plug#end()
 
