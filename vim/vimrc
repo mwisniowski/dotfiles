@@ -99,8 +99,6 @@ set nocompatible
   set clipboard=unnamed
   set hidden
   set diffopt+=vertical
-  set splitbelow
-  set splitright
 
 """""""""""""""""""""""""""
 " Plugin-Specific
@@ -144,7 +142,7 @@ set nocompatible
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
+  let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
   " Tex
   let g:ycm_semantic_triggers = {
