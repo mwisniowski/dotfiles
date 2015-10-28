@@ -41,6 +41,7 @@ set nocompatible
   Plug 'taketwo/vim-ros'
   " Plug 'scrooloose/syntastic'
   Plug 'rhysd/conflict-marker.vim'
+  Plug 'osyo-manga/vim-over'
 
   call plug#end()
 
@@ -220,6 +221,8 @@ set nocompatible
 " Keymaps
 """""""""""""""""""""""""""
   let mapleader = ","
+  inoremap kj <Esc>
+  cnoremap kj <Esc>
 
   " Normal mode
 
