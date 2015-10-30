@@ -250,7 +250,7 @@ let g:vimshell_force_overwrite_statusline = 0
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
+  " let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -354,11 +354,6 @@ let g:vimshell_force_overwrite_statusline = 0
     nnoremap <silent> ,dg :diffget<CR>
     nnoremap <silent> ,dp :diffput<CR>
 
-    " RainbowParentheses
-    nmap <leader>rt :RainbowParenthesesToggleAll<CR>
-
-    nnoremap <Leader>p :CtrlPBufTag<CR>
-
     " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
     vmap <Enter> <Plug>(EasyAlign)
 
@@ -380,6 +375,10 @@ let g:vimshell_force_overwrite_statusline = 0
     nnoremap <leader>gu :GundoToggle<CR>
 
     map <leader>f :pyf /usr/share/vim/addons/syntax/clang-format-3.6.py<cr>
+
+    nnoremap <leader>b :CtrlPBuffer<CR>
+    nnoremap <leader>f :CtrlP<CR>
+    nnoremap <leader>t :CtrlPTag<CR>
 
   " Insert Mode
 
