@@ -39,7 +39,7 @@ set nocompatible
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'sjl/gundo.vim'
   Plug 'taketwo/vim-ros'
-  Plug 'scrooloose/syntastic'
+  " Plug 'scrooloose/syntastic'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'osyo-manga/vim-over'
 
@@ -71,9 +71,9 @@ set nocompatible
 
   set expandtab
   set smarttab
-  set shiftwidth=2
-  set tabstop=2
-  set softtabstop=2
+  set shiftwidth=4
+  set tabstop=4
+  set softtabstop=4
   set ai
   set si
 
@@ -98,9 +98,8 @@ set nocompatible
   set linebreak
   set mouse=a
   set clipboard=unnamed
+  set hidden
   set diffopt+=vertical
-  set splitbelow
-  set splitright
 
 """""""""""""""""""""""""""
 " Plugin-Specific
@@ -251,7 +250,7 @@ let g:vimshell_force_overwrite_statusline = 0
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU"], v:count)'
+  let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -313,14 +312,14 @@ let g:vimshell_force_overwrite_statusline = 0
   let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
 
   " Syntastic
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
+  " set statusline+=%#warningmsg#
+  " set statusline+=%{SyntasticStatuslineFlag()}
+  " set statusline+=%*
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+  " let g:syntastic_always_populate_loc_list = 1
+  " let g:syntastic_auto_loc_list = 1
+  " let g:syntastic_check_on_open = 1
+  " let g:syntastic_check_on_wq = 0
 
   " DelimitMate
   let delimitMate_balance_matchpairs = 1
