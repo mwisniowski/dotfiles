@@ -26,6 +26,7 @@ set nocompatible
   Plug 'xolox/vim-misc'
   Plug 'xolox/vim-easytags'
   Plug 'altercation/vim-colors-solarized'
+  Plug 'chriskempson/base16-vim'
   Plug 'airblade/vim-gitgutter'
   Plug 'Valloric/ListToggle'
   Plug 'octol/vim-cpp-enhanced-highlight'
@@ -110,7 +111,7 @@ set nocompatible
       \ 'colorscheme': 'solarized',
       \ 'active': {
       \   'left': [ [ 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'filetype' ] ]
+      \   'right': [ [ 'syntastic', 'lineinfo', 'percent'], [ 'filetype' ] ]
       \ },
       \ 'component_function': {
       \   'fugitive': 'LightLineFugitive',
@@ -222,14 +223,14 @@ function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
 endfunction
 
-augroup AutoSyntastic
-  autocmd!
-  autocmd BufWritePost *.c,*.cpp call s:syntastic()
-augroup END
-function! s:syntastic()
-  SyntasticCheck
-  call lightline#update()
-endfunction
+" augroup AutoSyntastic
+"   autocmd!
+"   autocmd BufWritePost *.c,*.cpp call s:syntastic()
+" augroup END
+" function! s:syntastic()
+"   SyntasticCheck
+"   call lightline#update()
+" endfunction
 
 let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
@@ -237,6 +238,7 @@ let g:vimshell_force_overwrite_statusline = 0
 
   " Colorscheme
   colorscheme solarized
+  " let base16colorspace=256  " Access colors present in 256 colorspace"
   set background=dark
 
   " CtrlP

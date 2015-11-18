@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-
-export EDITOR='vim'
-export TERM='screen-256color'
+# [ -z "$PS1"  ] && return
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
 
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash_it"
@@ -29,9 +32,24 @@ export SCM_CHECK=true
 # https://github.com/xvzf/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
-export SCM_GIT_SHOW_DETAILS=false
-
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export VISUAL=vim
+export EDITOR=$VISUAL
+export HOST=ubuntu
+
+# Cruise ROS
+. /home/cruise/cruise/ros/scripts/run_setup.sh
+
+# added by Anaconda 2.3.0 installer
+# PATH="/home/mwis/anaconda/bin:$PATH"
+export PATH
+
+PYTHONPATH="/usr/local/lib/python2.7/dist-packages:$PYTHONPATH"
+PYTHONPATH="/usr/lib/python2.7/dist-packages:$PYTHONPATH"
+PYTHONPATH="/usr/lib/pymodules/python2.7/ansible:$PYTHONPATH"
+PYTHONPATH=".:$PYTHONPATH"
+export PYTHONPATH
+
+alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph/flamegraph.pl > profile.svg'
