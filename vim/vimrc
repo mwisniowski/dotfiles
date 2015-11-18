@@ -42,6 +42,7 @@ set nocompatible
   " Plug 'scrooloose/syntastic'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'osyo-manga/vim-over'
+  Plug 'jreybert/vimagit'
 
   call plug#end()
 
