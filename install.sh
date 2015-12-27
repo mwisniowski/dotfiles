@@ -5,8 +5,16 @@ DOTFILES_FOLDER=$HOME/.dotfiles
 ##############################################
 # Bash
 ##############################################
-ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash_it
+ln -sFf $DOTFILES_FOLDER/bash-it $HOME/.bash-it
 ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
+
+##############################################
+# Bin
+##############################################
+if [ ! -d $HOME/bin ]; then
+    mkdir $HOME/bin
+fi
+ln -sf $DOTFILES_FOLDER/bin $HOME/bin
 
 ##############################################
 # Tmux

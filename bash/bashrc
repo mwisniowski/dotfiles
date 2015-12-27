@@ -7,7 +7,7 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="$HOME/.bash_it"
+export BASH_IT="$HOME/.bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -37,13 +37,14 @@ source $BASH_IT/bash_it.sh
 
 export VISUAL=vim
 export EDITOR=$VISUAL
-export HOST=ubuntu
+export HOST=matthias
 
 # Cruise ROS
 . /home/cruise/cruise/ros/scripts/run_setup.sh
 
 # added by Anaconda 2.3.0 installer
 # PATH="/home/mwis/anaconda/bin:$PATH"
+PATH="$PATH:/usr/local/cuda/bin/"
 export PATH
 
 PYTHONPATH="/usr/local/lib/python2.7/dist-packages:$PYTHONPATH"
@@ -52,4 +53,4 @@ PYTHONPATH="/usr/lib/pymodules/python2.7/ansible:$PYTHONPATH"
 PYTHONPATH=".:$PYTHONPATH"
 export PYTHONPATH
 
-alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph/flamegraph.pl > profile.svg'
+alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph/flamegraph.pl > profile.svg && firefox profile.svg'

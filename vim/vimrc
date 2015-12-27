@@ -44,6 +44,7 @@ set nocompatible
   Plug 'rhysd/conflict-marker.vim'
   Plug 'osyo-manga/vim-over'
   Plug 'jreybert/vimagit'
+  Plug 'Chiel92/vim-autoformat'
 
   call plug#end()
 
@@ -253,7 +254,7 @@ let g:vimshell_force_overwrite_statusline = 0
         \ --ignore .DS_Store
         \ --ignore "**/*.pyc"
         \ -g ""'
-  " let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
+  let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
   " Tex
   let g:ycm_semantic_triggers = {
@@ -326,6 +327,9 @@ let g:vimshell_force_overwrite_statusline = 0
 
   " DelimitMate
   let delimitMate_balance_matchpairs = 1
+
+  " Vimagit
+  let g:magit_show_help=0
 
 """""""""""""""""""""""""""
 " Keymaps
