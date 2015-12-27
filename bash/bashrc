@@ -7,7 +7,7 @@ case $- in
 esac
 
 # Path to the bash it configuration
-export BASH_IT="$HOME/.bash_it"
+export BASH_IT="$HOME/.bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
@@ -40,10 +40,23 @@ export EDITOR=$VISUAL
 export HOST=ubuntu
 
 # Cruise ROS
-. /home/cruise/cruise/ros/scripts/run_setup.sh
+CRUISE_SETUP=/home/cruise/cruise/ros/scripts/run_setup.sh
+if [ -f $CRUISE_SETUP ]; then
+    source $CRUISE_SETUP
+fi
 
 # added by Anaconda 2.3.0 installer
 # PATH="/home/mwis/anaconda/bin:$PATH"
+PATH=/usr/local/bin
+PATH=$PATH:/usr/local/sbin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/usr/local/mysql
+PATH=$PATH:/usr/local/share/python
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin
 export PATH
 
 PYTHONPATH="/usr/local/lib/python2.7/dist-packages:$PYTHONPATH"
