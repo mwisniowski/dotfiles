@@ -41,7 +41,7 @@ export HOST=matthias
 
 # Cruise ROS
 CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
-if [ -f $CRUISE_SETUP ]; then
+if [[ -f $CRUISE_SETUP && $OSTYPE == "linux-gnu" ]]; then
     source $CRUISE_SETUP
 fi
 
