@@ -40,7 +40,7 @@ export EDITOR=$VISUAL
 export HOST=matthias
 
 # Cruise ROS
-CRUISE_SETUP=/home/cruise/cruise/ros/scripts/run_setup.sh
+CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
 if [ -f $CRUISE_SETUP ]; then
     source $CRUISE_SETUP
 fi
