@@ -8,6 +8,23 @@ DOTFILES_FOLDER=$HOME/.dotfiles
 ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash-it
 ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
 
+
+##############################################
+# diffconflicts
+##############################################
+if [ ! -f $HOME/bin ]; then
+    mkdir $HOME/bin
+fi
+ln -sf $DOTFILES_FOLDER/bin/diffconflicts $HOME/bin/
+if [[ $OSTYPE == "darwin"* ]]; then
+    hash gsed 2>/dev/null || { brew install gnu-sed }
+fi
+
+git config --global merge.tool diffconflicts
+git config --global mergetool.keepBackup false
+git config --global mergetool.diffconflicts.cmd 'diffconflicts vim $BASE $LOCAL $REMOTE $MERGED'
+git config --global mergetool.diffconflicts.trustExitCode true
+
 ##############################################
 # Tmux
 ##############################################
