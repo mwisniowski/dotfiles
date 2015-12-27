@@ -5,20 +5,22 @@ DOTFILES_FOLDER=$HOME/.dotfiles
 ##############################################
 # Bash
 ##############################################
-ln -sFf $DOTFILES_FOLDER/bash-it $HOME/.bash-it
-ln -sf $DOTFILES_FOLDER/bash-it $HOME/.bash-it
+BASH_IT_DST=$HOME/.bash-it
+if [ -d $BASH_IT_DST ]; then
+    rm $BASH_IT_DST
+fi
+ln -sf $DOTFILES_FOLDER/bash-it $BASH_IT_DST
 ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
-
 
 ##############################################
 # diffconflicts
 ##############################################
-if [ ! -f $HOME/bin ]; then
+if [ ! -d $HOME/bin ]; then
     mkdir $HOME/bin
 fi
 ln -sf $DOTFILES_FOLDER/bin/diffconflicts $HOME/bin/
 if [[ $OSTYPE == "darwin"* ]]; then
-    hash gsed 2>/dev/null || { brew install gnu-sed }
+    hash gsed 2>/dev/null || brew install gnu-sed
 fi
 
 git config --global merge.tool diffconflicts
