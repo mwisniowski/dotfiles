@@ -45,6 +45,9 @@ set nocompatible
   Plug 'osyo-manga/vim-over'
   Plug 'jreybert/vimagit'
   Plug 'Chiel92/vim-autoformat', { 'branch': 'dev' }
+  Plug 'mhinz/vim-startify'
+  Plug 'rhysd/clever-f.vim'
+  Plug 'tmhedberg/SimpylFold'
 
   call plug#end()
 
@@ -83,9 +86,9 @@ set nocompatible
   set laststatus=2
   set notitle
 
-  set foldmethod=indent
+  " set foldmethod=indent
   set nofoldenable " disable default folding
-  set foldnestmax=1
+  " set foldnestmax=1
 
   " Save when losing focus
   set autowriteall " Auto-save files when switching buffers or leaving vim.
@@ -330,6 +333,9 @@ let g:vimshell_force_overwrite_statusline = 0
 
   " Vimagit
   let g:magit_show_help=0
+
+  " Simplyfold
+  let g:SimpylFold_docstring_preview = 1
 
 """""""""""""""""""""""""""
 " Keymaps
