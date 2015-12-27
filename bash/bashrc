@@ -40,11 +40,24 @@ export EDITOR=$VISUAL
 export HOST=matthias
 
 # Cruise ROS
-. /home/cruise/cruise/ros/scripts/run_setup.sh
+CRUISE_SETUP=/home/cruise/cruise/ros/scripts/run_setup.sh
+if [ -f $CRUISE_SETUP ]; then
+    source $CRUISE_SETUP
+fi
 
 # added by Anaconda 2.3.0 installer
 # PATH="/home/mwis/anaconda/bin:$PATH"
-PATH="$PATH:/usr/local/cuda/bin/"
+PATH=/usr/local/bin
+PATH=$PATH:/usr/local/sbin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/usr/local/mysql
+PATH=$PATH:/usr/local/share/python
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:$HOME/bin
+PATH=$PATH:/usr/local/cuda/bin
 export PATH
 
 PYTHONPATH="/usr/local/lib/python2.7/dist-packages:$PYTHONPATH"
