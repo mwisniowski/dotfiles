@@ -7,7 +7,7 @@ DOTFILES_FOLDER=$HOME/.dotfiles
 ##############################################
 BASH_IT_DST=$HOME/.bash-it
 if [ -d $BASH_IT_DST ]; then
-    rm $BASH_IT_DST
+    rm -rf $BASH_IT_DST
 fi
 ln -sf $DOTFILES_FOLDER/bash-it $BASH_IT_DST
 ln -sf $DOTFILES_FOLDER/bash/bashrc $HOME/.bashrc
