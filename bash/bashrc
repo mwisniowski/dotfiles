@@ -57,5 +57,5 @@ alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph
 
 # Cruise ROS
 CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
-[ -f $CRUISE_SETUP ] && source $CRUISE_SETUP
+[[ $OSTYPE == "linux-gnu" && -f $CRUISE_SETUP ]] && source $CRUISE_SETUP
 
