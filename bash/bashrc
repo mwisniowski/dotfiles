@@ -38,24 +38,11 @@ source $BASH_IT/bash_it.sh
 export VISUAL=vim
 export EDITOR=$VISUAL
 export HOST=matthias
+export FZF_DEFAULT_COMMAND='ag -l -g ""'
 
-# Cruise ROS
-CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
-if [ -f $CRUISE_SETUP ]; then
-    source $CRUISE_SETUP
-fi
-
-# added by Anaconda 2.3.0 installer
-# PATH="/home/mwis/anaconda/bin:$PATH"
-PATH=/usr/local/bin
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/bin
-PATH=$PATH:/sbin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/sbin
 PATH=$PATH:/usr/local/mysql
 PATH=$PATH:/usr/local/share/python
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/bin
 PATH=$PATH:/usr/local/cuda/bin
 export PATH
@@ -67,3 +54,8 @@ PYTHONPATH=".:$PYTHONPATH"
 export PYTHONPATH
 
 alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph/flamegraph.pl > profile.svg && firefox profile.svg'
+
+# Cruise ROS
+CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
+[ -f $CRUISE_SETUP ] && source $CRUISE_SETUP
+
