@@ -11,6 +11,8 @@ set nocompatible
   Plug 'tpope/vim-sensible'
   Plug 'tpope/vim-repeat'
   Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-eunuch'
+  Plug 'tpope/vim-unimpaired'
   Plug 'kien/ctrlp.vim'
   Plug 'dantler/vim-alternate'
   Plug 'Raimondi/delimitMate'
@@ -18,9 +20,7 @@ set nocompatible
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'vim-scripts/argtextobj.vim'
   Plug 'kana/vim-textobj-user'
-  Plug 'rking/ag.vim'
   Plug 'tomtom/tcomment_vim'
-  Plug 'danro/rename.vim'
   Plug 'kana/vim-operator-user'
   Plug 'vim-scripts/DoxygenToolkit.vim'
   Plug 'xolox/vim-misc'
@@ -39,7 +39,6 @@ set nocompatible
   Plug 'junegunn/vim-easy-align'
   Plug 'bronson/vim-trailing-whitespace'
   Plug 'sjl/gundo.vim'
-  Plug 'taketwo/vim-ros'
   " Plug 'scrooloose/syntastic'
   Plug 'rhysd/conflict-marker.vim'
   Plug 'osyo-manga/vim-over'
@@ -54,87 +53,89 @@ set nocompatible
 """""""""""""""""""""""""""
 " General
 """""""""""""""""""""""""""
-  syntax on
-  filetype plugin indent on
-  set number
-  set incsearch
-  set cindent
-  set ignorecase
-  set smartcase
-  set ruler
-  set magic
-  set showmatch
+syntax on
+filetype plugin indent on
+set number
+set incsearch
+set cindent
+set ignorecase
+set smartcase
+set ruler
+set magic
+set showmatch
 
-  set noerrorbells
-  set novisualbell
+set noerrorbells
+set novisualbell
 
-  set encoding=utf8
-  set ffs=unix
+set encoding=utf8
+set ffs=unix
 
-  set nobackup
-  set nowb
-  set noswapfile
+set nobackup
+set nowb
+set noswapfile
 
-  set expandtab
-  set smarttab
-  set shiftwidth=4
-  set tabstop=4
-  set softtabstop=4
-  set ai
-  set si
+set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set ai
+set si
 
-  set laststatus=2
-  set notitle
+set laststatus=2
+set notitle
 
-  " set foldmethod=indent
-  set nofoldenable " disable default folding
-  " set foldnestmax=1
+" set foldmethod=indent
+set nofoldenable " disable default folding
+" set foldnestmax=1
 
-  " Save when losing focus
-  set autowriteall " Auto-save files when switching buffers or leaving vim.
-  au FocusLost * silent! :wa
-  au TabLeave * silent! :wa
+" Save when losing focus
+set autowriteall " Auto-save files when switching buffers or leaving vim.
+au FocusLost * silent! :wa
+au TabLeave * silent! :wa
 
-  set splitright
+set splitright
 
-  set sessionoptions+=resize,winpos
-  set exrc
-  set secure
-  set wrap
-  set linebreak
-  set mouse=a
-  set clipboard=unnamed
-  set hidden
-  set diffopt+=vertical
+set sessionoptions+=resize,winpos
+set exrc
+set secure
+set wrap
+set linebreak
+set mouse=a
+set clipboard=unnamed
+set hidden
+set diffopt+=vertical
+
+set wildignore+=*/.git/*,*/tmp/*,*.swp,*.pyc
 
 """""""""""""""""""""""""""
 " Plugin-Specific
 """""""""""""""""""""""""""
 
-  " Lightline
-  let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ 'active': {
-      \   'left': [ [ 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-      \   'right': [ [ 'syntastic', 'lineinfo', 'percent'], [ 'filetype' ] ]
-      \ },
-      \ 'component_function': {
-      \   'fugitive': 'LightLineFugitive',
-      \   'filename': 'LightLineFilename',
-      \   'fileformat': 'LightLineFileformat',
-      \   'filetype': 'LightLineFiletype',
-      \   'fileencoding': 'LightLineFileencoding',
-      \   'mode': 'LightLineMode',
-      \   'ctrlpmark': 'CtrlPMark',
-      \ },
-      \ 'component_expand': {
-      \   'syntastic': 'SyntasticStatuslineFlag',
-      \ },
-      \ 'component_type': {
-      \   'syntastic': 'error',
-      \ },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+" Lightline
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \   'left': [ [ 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+  \   'right': [ [ 'syntastic', 'lineinfo', 'percent'], [ 'filetype' ] ]
+  \ },
+  \ 'component_function': {
+  \   'fugitive': 'LightLineFugitive',
+  \   'filename': 'LightLineFilename',
+  \   'fileformat': 'LightLineFileformat',
+  \   'filetype': 'LightLineFiletype',
+  \   'fileencoding': 'LightLineFileencoding',
+  \   'mode': 'LightLineMode',
+  \   'ctrlpmark': 'CtrlPMark',
+  \ },
+  \ 'component_expand': {
+  \   'syntastic': 'SyntasticStatuslineFlag',
+  \ },
+  \ 'component_type': {
+  \   'syntastic': 'error',
+  \ },
+  \ 'subseparator': { 'left': '|', 'right': '|' }
+  \ }
 
 function! LightLineModified()
   return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
@@ -241,167 +242,163 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
-  " Colorscheme
-  colorscheme solarized
-  " let base16colorspace=256  " Access colors present in 256 colorspace"
-  set background=dark
+" Colorscheme
+colorscheme solarized
+" let base16colorspace=256  " Access colors present in 256 colorspace"
+set background=dark
 
-  " CtrlP
-  " let g:ctrlp_prompt_mappings = { 'AcceptSelection("e")': ['<c-t>'], 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'], }
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_root_markers = [ 'CMakeLists.txt' ]
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore "**/*.pyc"
-        \ -g ""'
-  let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+if executable('rg')
+    set grepprg=rg\ --color=never
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+endif
+let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
-  " Tex
-  let g:ycm_semantic_triggers = {
-  \  'tex'  : ['\ref{','\cite{'],
-  \ }
+" Tex
+let g:ycm_semantic_triggers = {
+\  'tex'  : ['\ref{','\cite{'],
+\ }
 
-  " UltiSnips
-  let g:UltiSnipsEditSplit = 'vertical'
+" UltiSnips
+let g:UltiSnipsEditSplit = 'vertical'
 
-  " VimMove
-  " let g:move_key_modifier = 'D'
+" VimMove
+" let g:move_key_modifier = 'D'
 
-  " VimSession
-  " Prevent vim-session from asking us to load the session.
-  " If you want to load the session, use :SaveSession and :OpenSession
-  let g:session_autosave = 'no'
-  " let g:session_autosave_periodic = '5'
-  let g:session_autoload = 'no'
+" VimSession
+" Prevent vim-session from asking us to load the session.
+" If you want to load the session, use :SaveSession and :OpenSession
+let g:session_autosave = 'no'
+" let g:session_autosave_periodic = '5'
+let g:session_autoload = 'no'
 
-  " YouCompleteMe
-  let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf'
-  let g:ycm_confirm_extra_conf = 0
-  let g:ycm_collect_identifiers_from_tags_files = 1
-  let g:ycm_always_populate_location_list = 1
-  let g:ycm_autoclose_preview_window_after_insertion = 1
-  let g:ycm_semantic_triggers = {
-    \ 'c' : ['->', '.'],
-  \ }
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_always_populate_location_list = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers = {
+\ 'c' : ['->', '.'],
+\ }
 
-  " Quickscope
-  let g:qs_enable = 0
-  let g:qs_enable_char_list = [ 'f', 'F', 't', 'T'  ]
+" Quickscope
+let g:qs_enable = 0
+let g:qs_enable_char_list = [ 'f', 'F', 't', 'T'  ]
 
-  function! Quick_scope_selective(movement)
-    let needs_disabling = 0
-    if !g:qs_enable
-      QuickScopeToggle
-      redraw
-      let needs_disabling = 1
-    endif
-    let letter = nr2char(getchar())
-    if needs_disabling
-      QuickScopeToggle
-    endif
-    return a:movement . letter
-  endfunction
+function! Quick_scope_selective(movement)
+let needs_disabling = 0
+if !g:qs_enable
+  QuickScopeToggle
+  redraw
+  let needs_disabling = 1
+endif
+let letter = nr2char(getchar())
+if needs_disabling
+  QuickScopeToggle
+endif
+return a:movement . letter
+endfunction
 
-  for i in g:qs_enable_char_list
-    execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
-  endfor
+for i in g:qs_enable_char_list
+execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
+endfor
 
-  " Easytags
-  let g:easytags_async = 1
-  let g:easytags_suppress_ctags_warning = 1
+" Easytags
+let g:easytags_async = 1
+let g:easytags_suppress_ctags_warning = 1
 
-  " ROS
-  let g:ros_make = 'current'
-  let g:ros_build_system = 'catkin-tools'
-  let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
+" ROS
+let g:ros_make = 'current'
+let g:ros_build_system = 'catkin-tools'
+let g:ros_catkin_make_options = '-DCMAKE_BUILD_TYPE=Debug'
 
-  " Syntastic
-  " set statusline+=%#warningmsg#
-  " set statusline+=%{SyntasticStatuslineFlag()}
-  " set statusline+=%*
+" Syntastic
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-  " let g:syntastic_always_populate_loc_list = 1
-  " let g:syntastic_auto_loc_list = 1
-  " let g:syntastic_check_on_open = 1
-  " let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-  " DelimitMate
-  let delimitMate_balance_matchpairs = 1
+" DelimitMate
+let delimitMate_balance_matchpairs = 1
 
-  " Vimagit
-  let g:magit_show_help=0
+" Vimagit
+let g:magit_show_help=0
 
-  " Simplyfold
-  let g:SimpylFold_docstring_preview = 1
+" Simplyfold
+let g:SimpylFold_docstring_preview = 1
 
 """""""""""""""""""""""""""
 " Keymaps
 """""""""""""""""""""""""""
-  let mapleader = ","
-  inoremap kj <Esc>
-  cnoremap kj <Esc>
+let mapleader = ","
+inoremap kj <Esc>
+cnoremap kj <Esc>
 
-  " Normal mode
+" Normal mode
 
-    " NerdTree
-    " nmap <silent> <F3> <plug>NERDTreeTabsToggle<CR>
+" NerdTree
+" nmap <silent> <F3> <plug>NERDTreeTabsToggle<CR>
 
-    " tComment
-    " comment paragraph
-    " nmap <silent> gcp <c-_>p
+" tComment
+" comment paragraph
+" nmap <silent> gcp <c-_>p
 
-    " Window navigation
-    nnoremap <C-h> <C-w><C-h>
-    nnoremap <C-j> <C-w><C-j>
-    nnoremap <C-k> <C-w><C-k>
-    nnoremap <C-l> <C-w><C-l>
+" Window navigation
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
 
-    " Ag
-    " nmap <leader>ag :Ag ""<Left>
-    " nmap <leader>af :AgFile ""<Left>
+" Ag
+" nmap <leader>ag :Ag ""<Left>
+" nmap <leader>af :AgFile ""<Left>
 
-    " fugitive.git
-    nnoremap <silent> ,dg :diffget<CR>
-    nnoremap <silent> ,dp :diffput<CR>
+" fugitive.git
+nnoremap <silent> ,dg :diffget<CR>
+nnoremap <silent> ,dp :diffput<CR>
 
-    " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-    vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
 
-    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-    " nmap ga <Plug>(EasyAlign))
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+" nmap ga <Plug>(EasyAlign))
 
-    nnoremap <silent> <leader>gs :Gstatus<CR>
-    nnoremap <silent> <leader>gd :Gdiff<CR>
-    nnoremap <silent> <leader>gc :Gcommit --verbose<CR>
-    nnoremap <silent> <leader>gam :Gcommit --verbose --amend<CR>
-    nnoremap <silent> <leader>gb :Gblame<CR>
-    nnoremap <silent> <leader>gl :Glog<CR>
-    nnoremap <silent> <leader>gp :Git push<CR>
-    nnoremap <silent> <leader>gw :Gwrite<CR>
-    nnoremap <silent> <leader>gbr :Git branch<CR>
+nnoremap <silent> <leader>gs :Gstatus<CR>
+nnoremap <silent> <leader>gd :Gdiff<CR>
+nnoremap <silent> <leader>gc :Gcommit --verbose<CR>
+nnoremap <silent> <leader>gam :Gcommit --verbose --amend<CR>
+nnoremap <silent> <leader>gb :Gblame<CR>
+nnoremap <silent> <leader>gl :Glog<CR>
+nnoremap <silent> <leader>gp :Git push<CR>
+nnoremap <silent> <leader>gw :Gwrite<CR>
+nnoremap <silent> <leader>gbr :Git branch<CR>
 
-    nnoremap <leader>ma :Make<CR>
+nnoremap <leader>ma :Make<CR>
 
-    nnoremap <leader>gu :GundoToggle<CR>
+nnoremap <leader>gu :GundoToggle<CR>
 
-    map <leader>af :Autoformat<CR>
-    noremap <leader>af :Autoformat<CR>
-    nnoremap <leader>b :CtrlPBuffer<CR>
-    nnoremap <leader>f :CtrlP<CR>
-    nnoremap <leader>t :CtrlPTag<CR>
+map <leader>af :Autoformat<CR>
+noremap <leader>af :Autoformat<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>t :CtrlPTag<CR>
 
-  " Insert Mode
+" Insert Mode
 
-    " make YCM compatible with UltiSnips (using supertab)
-    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-    let g:SuperTabDefaultCompletionType = '<C-n>'
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
-    " UltiSnips
-    let g:UltiSnipsExpandTrigger = "<tab>"
-    let g:UltiSnipsJumpForwardTrigger = "<tab>"
-    let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 

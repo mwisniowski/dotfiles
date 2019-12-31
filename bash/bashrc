@@ -13,18 +13,6 @@ export BASH_IT="$HOME/.bash-it"
 # location /.bash_it/themes/
 export BASH_IT_THEME='sexy'
 
-# Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='git@git.domain.com'
-
-# Don't check mail when opening terminal.
-unset MAILCHECK
-
-# Change this to your console based IRC client of choice.
-export IRC_CLIENT='irssi'
-
-# Set this to the command you use for todo.txt-cli
-export TODO="t"
-
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
@@ -37,25 +25,14 @@ source $BASH_IT/bash_it.sh
 
 export VISUAL=vim
 export EDITOR=$VISUAL
-export HOST=matthias
-export FZF_DEFAULT_COMMAND='ag -l -g ""'
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
-PATH=$PATH:/usr/local/mysql
+PATH=/usr/local/opt/python/libexec/bin:$PATH
 PATH=$PATH:/usr/local/share/python
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/sbin
 PATH=$PATH:$HOME/bin
-PATH=$PATH:/usr/local/cuda/bin
 export PATH
 
-PYTHONPATH="/usr/local/lib/python2.7/dist-packages:$PYTHONPATH"
-PYTHONPATH="/usr/lib/python2.7/dist-packages:$PYTHONPATH"
-PYTHONPATH="/usr/lib/pymodules/python2.7/ansible:$PYTHONPATH"
-PYTHONPATH=".:$PYTHONPATH"
-export PYTHONPATH
+[[ -s /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source /usr/local/bin/virtualenvwrapper_lazy.sh
 
-alias makeflame='perf script | ~/FlameGraph/stackcollapse-perf.pl | ~/FlameGraph/flamegraph.pl > profile.svg && firefox profile.svg'
-
-# Cruise ROS
-CRUISE_SETUP=$HOME/cruise/ros/scripts/run_setup.sh
-[[ $OSTYPE == "linux-gnu" && -f $CRUISE_SETUP ]] && source $CRUISE_SETUP
-
+alias nb="workon notebook && jupyter notebook; deactivate; cd"
