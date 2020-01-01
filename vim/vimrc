@@ -243,7 +243,14 @@ let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 
 " Colorscheme
-colorscheme solarized
+try
+    colorscheme solarized
+catch /^Vim\%((\a\+)\)\=:E185/
+    " In case it doesn't exist, fall back to default
+    " (Before PlugInstall)
+    colorscheme default
+endtry
+
 " let base16colorspace=256  " Access colors present in 256 colorspace"
 set background=dark
 
