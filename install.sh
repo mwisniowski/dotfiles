@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DOTFILES_FOLDER=$HOME/.dotfiles
 
@@ -58,6 +58,8 @@ ln -sf $DOTFILES_FOLDER/vim/vimrc $HOME/.vimrc
 ln -sf $DOTFILES_FOLDER/vim/UltiSnips $VIM_FOLDER/
 
 vim +PlugInstall +qall
+YCM_INSTALLER=$VIM_FOLDER/bundle/YouCompleteMe/install.py
+command -v $YCM_INSTALLER > /dev/null && $YCM_INSTALLER > /dev/null
 
 ##############################################
 # Fzf
