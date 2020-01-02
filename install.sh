@@ -58,8 +58,9 @@ ln -sf $DOTFILES_FOLDER/vim/vimrc $HOME/.vimrc
 ln -sf $DOTFILES_FOLDER/vim/UltiSnips $VIM_FOLDER/
 
 vim +PlugInstall +qall
+# install youcompleteme plugin
 YCM_INSTALLER=$VIM_FOLDER/bundle/YouCompleteMe/install.py
-command -v $YCM_INSTALLER > /dev/null && $YCM_INSTALLER > /dev/null
+[[ -s $YCM_INSTALLER ]] && python3 $YCM_INSTALLER > /dev/null
 
 ##############################################
 # Fzf
