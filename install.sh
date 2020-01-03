@@ -41,6 +41,8 @@ ln -sf $DOTFILES_FOLDER/bin $HOME/bin
 ##############################################
 
 ln -sf $DOTFILES_FOLDER/tmux/tmux.conf $HOME/.tmux.conf
+mkdir -p $HOME/.tmux/plugins
+ln -sf $DOTFILES_FOLDER/tpm $HOME/.tmux/plugins/tpm
 
 ##############################################
 # Vim
