@@ -6,33 +6,69 @@ case $- in
       *) return;;
 esac
 
+export CLICOLOR=1
+
+export LANG=en_US.UTF-8
+export VISUAL=nvim
+export EDITOR=$VISUAL
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+PATH=$PATH:/usr/local/sbin
+# PATH=$PATH:/usr/local/Cellar/fzf/0.27.2/bin
+PATH=$PATH:$HOME/bin
+PATH=$PATH:$HOME/.local/bin
+export PATH
+
 # Path to the bash it configuration
 export BASH_IT="$HOME/.bash-it"
 
 # Lock and Load a custom theme file
 # location /.bash_it/themes/
-export BASH_IT_THEME='sexy'
-
+# export BASH_IT_THEME='doubletime'
 # Set this to false to turn off version control status checking within the prompt for all themes
-export SCM_CHECK=true
-
-# Set vcprompt executable path for scm advance info in prompt (demula theme)
-# https://github.com/xvzf/vcprompt
-#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+# export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
-export VISUAL=vim
-export EDITOR=$VISUAL
-export BASH_SILENCE_DEPRECATION_WARNING=1
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-PATH=/usr/local/opt/python/libexec/bin:$PATH
-PATH=$PATH:/usr/local/share/python
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:$HOME/bin
-export PATH
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-[[ -s /usr/local/bin/virtualenvwrapper_lazy.sh ]] && source /usr/local/bin/virtualenvwrapper_lazy.sh
+alias vim="/usr/local/bin/nvim"
 
-alias nb="workon notebook && jupyter notebook; deactivate; cd"
+eval "$(starship init bash)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniforge/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniforge/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/usr/local/Caskroom/miniforge/base/etc/profile.d/mamba.sh" ]; then
+    . "/usr/local/Caskroom/miniforge/base/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+# >>> nvm initialize >>>
+# export NVM_DIR="$HOME/.nvm"
+#   [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# <<< nvm initialize <<<
+
+# Added by Amplify CLI binary installer
+# export PATH="$HOME/.amplify/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+. "$HOME/.local/bin/env"

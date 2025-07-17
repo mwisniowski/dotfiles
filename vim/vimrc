@@ -3,52 +3,60 @@ set nocompatible
 """""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""
-  call plug#begin('~/.vim/bundle')
-  " Load vundle plugins
-  Plug 'tpope/vim-dispatch'
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-markdown'
-  Plug 'tpope/vim-sensible'
-  Plug 'tpope/vim-repeat'
-  Plug 'tpope/vim-fugitive'
-  Plug 'tpope/vim-eunuch'
-  Plug 'tpope/vim-unimpaired'
-  Plug 'kien/ctrlp.vim'
-  Plug 'dantler/vim-alternate'
-  Plug 'Raimondi/delimitMate'
-  Plug 'itchyny/lightline.vim'
-  Plug 'michaeljsmith/vim-indent-object'
-  Plug 'vim-scripts/argtextobj.vim'
-  Plug 'kana/vim-textobj-user'
-  Plug 'tomtom/tcomment_vim'
-  Plug 'kana/vim-operator-user'
-  Plug 'vim-scripts/DoxygenToolkit.vim'
-  Plug 'xolox/vim-misc'
-  Plug 'xolox/vim-easytags'
-  Plug 'altercation/vim-colors-solarized'
-  Plug 'chriskempson/base16-vim'
-  Plug 'airblade/vim-gitgutter'
-  Plug 'Valloric/ListToggle'
-  Plug 'octol/vim-cpp-enhanced-highlight'
-  Plug 'ervandew/supertab'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'tmux-plugins/vim-tmux'
-  Plug 'SirVer/ultisnips'
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'unblevable/quick-scope'
-  Plug 'junegunn/vim-easy-align'
-  Plug 'bronson/vim-trailing-whitespace'
-  Plug 'sjl/gundo.vim'
-  " Plug 'scrooloose/syntastic'
-  Plug 'rhysd/conflict-marker.vim'
-  Plug 'osyo-manga/vim-over'
-  Plug 'jreybert/vimagit'
-  Plug 'Chiel92/vim-autoformat', { 'branch': 'dev' }
-  Plug 'mhinz/vim-startify'
-  Plug 'rhysd/clever-f.vim'
-  Plug 'tmhedberg/SimpylFold'
+call plug#begin('~/.vim/bundle')
 
-  call plug#end()
+" Load vundle plugins
+" Plug 'scrooloose/syntastic'
+Plug 'Chiel92/vim-autoformat'
+Plug 'Raimondi/delimitMate'
+Plug 'Valloric/ListToggle'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'dantler/vim-alternate'
+Plug 'dense-analysis/ale'
+Plug 'ervandew/supertab'
+Plug 'jremmen/vim-ripgrep'
+Plug 'jreybert/vimagit'
+Plug 'junegunn/vim-easy-align'
+Plug 'kana/vim-operator-user'
+Plug 'kana/vim-textobj-user'
+Plug 'kien/ctrlp.vim'
+Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'osyo-manga/vim-over'
+Plug 'rhysd/clever-f.vim'
+Plug 'rhysd/conflict-marker.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'sjl/gundo.vim'
+Plug 'tmhedberg/SimpylFold'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'unblevable/quick-scope'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'vim-test/vim-test'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+call plug#end()
 
 """""""""""""""""""""""""""
 " General
@@ -69,9 +77,10 @@ set novisualbell
 
 set encoding=utf8
 set ffs=unix
+set updatetime=300
 
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 set expandtab
@@ -112,147 +121,26 @@ set wildignore+=*/.git/*,*/tmp/*,*.swp,*.pyc
 " Plugin-Specific
 """""""""""""""""""""""""""
 
-" Lightline
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ 'active': {
-  \   'left': [ [ 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-  \   'right': [ [ 'syntastic', 'lineinfo', 'percent'], [ 'filetype' ] ]
-  \ },
-  \ 'component_function': {
-  \   'fugitive': 'LightLineFugitive',
-  \   'filename': 'LightLineFilename',
-  \   'fileformat': 'LightLineFileformat',
-  \   'filetype': 'LightLineFiletype',
-  \   'fileencoding': 'LightLineFileencoding',
-  \   'mode': 'LightLineMode',
-  \   'ctrlpmark': 'CtrlPMark',
-  \ },
-  \ 'component_expand': {
-  \   'syntastic': 'SyntasticStatuslineFlag',
-  \ },
-  \ 'component_type': {
-  \   'syntastic': 'error',
-  \ },
-  \ 'subseparator': { 'left': '|', 'right': '|' }
-  \ }
-
-function! LightLineModified()
-  return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightLineReadonly()
-  return &ft !~? 'help' && &readonly ? 'RO' : ''
-endfunction
-
-function! LightLineFilename()
-  let fname = expand('%:t')
-  return fname == 'ControlP' ? g:lightline.ctrlp_item :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname =~ '__Gundo\|NERD_tree' ? '' :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
-        \ ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-        \ ('' != fname ? fname : '[No Name]') .
-        \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightLineFugitive()
-  try
-    if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-      let mark = ''  " edit here for cool mark
-      let _ = fugitive#head()
-      return strlen(_) ? mark._ : ''
-    endif
-  catch
-  endtry
-  return ''
-endfunction
-
-function! LightLineFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
-
-function! LightLineFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LightLineFileencoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightLineMode()
-  let fname = expand('%:t')
-  return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'vimshell' ? 'VimShell' :
-        \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
-function! CtrlPMark()
-  if expand('%:t') =~ 'ControlP'
-    call lightline#link('iR'[g:lightline.ctrlp_regex])
-    return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-          \ , g:lightline.ctrlp_next], 0)
-  else
-    return ''
-  endif
-endfunction
-
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  let g:lightline.ctrlp_regex = a:regex
-  let g:lightline.ctrlp_prev = a:prev
-  let g:lightline.ctrlp_item = a:item
-  let g:lightline.ctrlp_next = a:next
-  return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
-
-let g:tagbar_status_func = 'TagbarStatusFunc'
-
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-    let g:lightline.fname = a:fname
-  return lightline#statusline(0)
-endfunction
-
-" augroup AutoSyntastic
-"   autocmd!
-"   autocmd BufWritePost *.c,*.cpp call s:syntastic()
-" augroup END
-" function! s:syntastic()
-"   SyntasticCheck
-"   call lightline#update()
-" endfunction
-
-let g:unite_force_overwrite_statusline = 0
-let g:vimfiler_force_overwrite_statusline = 0
-let g:vimshell_force_overwrite_statusline = 0
+" Airline
+let g:airline_theme='gruvbox'
+let g:airline_symbols_ascii = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#coc#show_coc_status = 1
 
 " Colorscheme
 try
-    colorscheme solarized
+    set termguicolors
+    set background=dark
+    colorscheme gruvbox
+    " let base16colorspace=256  " Access colors present in 256 colorspace"
+    " colorscheme solarized
 catch /^Vim\%((\a\+)\)\=:E185/
     " In case it doesn't exist, fall back to default
     " (Before PlugInstall)
     colorscheme default
 endtry
 
-" let base16colorspace=256  " Access colors present in 256 colorspace"
-set background=dark
 
 " CtrlP
 let g:ctrlp_working_path_mode = 'ra'
@@ -265,8 +153,8 @@ let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU"], v:count)'
 
 " Tex
 let g:ycm_semantic_triggers = {
-\  'tex'  : ['\ref{','\cite{'],
-\ }
+            \  'tex'  : ['\ref{','\cite{'],
+            \ }
 
 " UltiSnips
 let g:UltiSnipsEditSplit = 'vertical'
@@ -288,29 +176,29 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_always_populate_location_list = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_semantic_triggers = {
-\ 'c' : ['->', '.'],
-\ }
+            \ 'c' : ['->', '.'],
+            \ }
 
 " Quickscope
 let g:qs_enable = 0
 let g:qs_enable_char_list = [ 'f', 'F', 't', 'T'  ]
 
 function! Quick_scope_selective(movement)
-let needs_disabling = 0
-if !g:qs_enable
-  QuickScopeToggle
-  redraw
-  let needs_disabling = 1
-endif
-let letter = nr2char(getchar())
-if needs_disabling
-  QuickScopeToggle
-endif
-return a:movement . letter
+    let needs_disabling = 0
+    if !g:qs_enable
+        QuickScopeToggle
+        redraw
+        let needs_disabling = 1
+    endif
+    let letter = nr2char(getchar())
+    if needs_disabling
+        QuickScopeToggle
+    endif
+    return a:movement . letter
 endfunction
 
 for i in g:qs_enable_char_list
-execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
+    execute 'noremap <expr> <silent>' . i . " Quick_scope_selective('". i . "')"
 endfor
 
 " Easytags
@@ -341,6 +229,34 @@ let g:magit_show_help=0
 " Simplyfold
 let g:SimpylFold_docstring_preview = 1
 
+" Emmet.vim
+let g:user_emmet_settings = {
+            \  'javascript' : {
+                \      'extends' : 'jsx,tsx',
+                \  },
+                \}
+let g:user_emmet_mode='a'
+
+" netrw
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
+" startify
+let g:startify_custom_header = startify#fortune#boxed()
+
+let g:ale_fixers = {
+            \   'javascript': [
+                \       'prettier'
+                \   ],
+                \   'typescript': [
+                    \       'prettier'
+                    \   ],
+                    \   'python' : [
+                        \       'isort',
+                        \       'black'
+                        \   ]
+                        \}
+
 """""""""""""""""""""""""""
 " Keymaps
 """""""""""""""""""""""""""
@@ -350,22 +266,11 @@ cnoremap kj <Esc>
 
 " Normal mode
 
-" NerdTree
-" nmap <silent> <F3> <plug>NERDTreeTabsToggle<CR>
-
-" tComment
-" comment paragraph
-" nmap <silent> gcp <c-_>p
-
 " Window navigation
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
-
-" Ag
-" nmap <leader>ag :Ag ""<Left>
-" nmap <leader>af :AgFile ""<Left>
 
 " fugitive.git
 nnoremap <silent> ,dg :diffget<CR>
@@ -397,15 +302,56 @@ nnoremap <leader>b :CtrlPBuffer<CR>
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>t :CtrlPTag<CR>
 
+" Coc.vim
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
 " Insert Mode
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+" Coc.vim
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
