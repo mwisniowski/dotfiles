@@ -1,0 +1,27 @@
+[user]
+	name = Matthias Wisniowski
+	email = matthias.wisniowski@gmail.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTxpr2RJWVL955NPv/V7swD+xO3+iADhCeyTwITwJAp
+[merge]
+	tool = diffconflicts
+[mergetool]
+	keepBackup = false
+[mergetool "diffconflicts"]
+	cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+	trustExitCode = true
+[push]
+	autoSetupRemote = true
+[gpg]
+  format = ssh
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[commit]
+	gpgsign = true
+	verbose = true
+[rerere]
+	enabled = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
