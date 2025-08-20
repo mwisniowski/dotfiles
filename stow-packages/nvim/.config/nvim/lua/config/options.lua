@@ -17,6 +17,7 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
 vim.opt.clipboard = "unnamedplus"
+vim.opt.timeoutlen = 300
 
 vim.o.winborder = "rounded"
 vim.diagnostic.config({
