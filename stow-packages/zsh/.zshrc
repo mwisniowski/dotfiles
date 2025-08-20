@@ -127,3 +127,4 @@ unset __conda_setup
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 . "$HOME/.local/bin/env"
+export PATH="$PATH:/Users/mwis/.bun/bin"
