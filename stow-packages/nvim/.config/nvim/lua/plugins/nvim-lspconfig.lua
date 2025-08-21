@@ -26,35 +26,6 @@ return {
 					"ts_ls",
 				},
 				automatic_installation = true,
-				automatic_enable = {
-					exclude = { "basedpyright" },
-				},
-			})
-
-			-- Configure basedpyright for uv environments
-			local lspconfig = require("lspconfig")
-			lspconfig.basedpyright.setup({
-				before_init = function(_, config)
-					-- Try to find uv python interpreter
-					local handle = io.popen("uv python find 2>/dev/null")
-					if handle then
-						local result = handle:read("*a")
-						handle:close()
-						if result and result ~= "" then
-							config.settings.python = config.settings.python or {}
-							config.settings.python.pythonPath = vim.trim(result)
-						end
-					end
-				end,
-				settings = {
-					python = {
-						analysis = {
-							autoSearchPaths = true,
-							useLibraryCodeForTypes = true,
-							diagnosticMode = "workspace",
-						},
-					},
-				},
 			})
 
 			-- Disable hover for ruff in favor of basedpyright

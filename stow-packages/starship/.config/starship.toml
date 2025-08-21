@@ -12,7 +12,7 @@ symbol = " "
 # format = "on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)"
 format = "(on [$symbol$profile]($style)) "
 style = "bold yellow"
-symbol = "  "
+symbol = " "
 
 [azure]
 symbol = "  "
