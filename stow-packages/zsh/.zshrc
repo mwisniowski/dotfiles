@@ -78,6 +78,7 @@ plugins=(
     git
     httpie
     starship
+    nvm
     z
 )
 

@@ -48,6 +48,15 @@ nmap("<C-Down>", ":resize 2<CR>", { desc = "Grow window height", silent = true }
 nmap("<C-Left>", ":vertical resize -2<CR>", { desc = "Shrink window width", silent = true })
 nmap("<C-Right>", ":vertical resize 2<CR>", { desc = "Grow window width", silent = true })
 
+-- Window splitting
+nmap("<leader>-", ":split<CR>", { desc = "Split window below", silent = true })
+nmap("<leader>\\", ":vsplit<CR>", { desc = "Split window right", silent = true })
+nmap("<leader>wd", "<C-w>c", { desc = "Close window", silent = true })
+
+-- Buffer navigation
+nmap("<S-h>", ":bprevious<CR>", { desc = "Previous buffer", silent = true })
+nmap("<S-l>", ":bnext<CR>", { desc = "Next buffer", silent = true })
+
 -- ========== TELESCOPE ========== --
 
 nmap("<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
@@ -80,8 +89,8 @@ nmap("<M-3>", "<cmd>3ToggleTerm<CR>", { desc = "Toggle terminal 3" })
 -- ========== FORMAT ========== --
 
 nmap("<leader>af", function()
-	vim.lsp.buf.format({ async = true })
-end, { desc = "Format buffer with LSP", silent = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
+end, { desc = "Format buffer", silent = true })
 
 -- ========== TESTING ========== --
 nmap("<leader>tn", function()
@@ -133,3 +142,55 @@ end, { desc = "Next harpoon file" })
 
 -- Telescope integration
 nmap("<leader>fh", "<cmd>Telescope harpoon marks<CR>", { desc = "Find harpoon marks" })
+
+-- ========== FOLDING (UFO) ========== --
+
+nmap("zR", function()
+	require("ufo").openAllFolds()
+end, { desc = "Open all folds" })
+nmap("zM", function()
+	require("ufo").closeAllFolds()
+end, { desc = "Close all folds" })
+nmap("zr", function()
+	require("ufo").openFoldsExceptKinds()
+end, { desc = "Open folds except kinds" })
+nmap("zm", function()
+	require("ufo").closeFoldsWith()
+end, { desc = "Close folds with" })
+nmap("zK", function()
+	local winid = require("ufo").peekFoldedLinesUnderCursor()
+	if not winid then
+		vim.lsp.buf.hover()
+	end
+end, { desc = "Peek fold" })
+
+-- ========== QUICKSCOPE ========== --
+
+nmap("f", "v:lua.QuickScopeWrap('f')", { expr = true, silent = true, desc = "Enhanced f motion" })
+nmap("F", "v:lua.QuickScopeWrap('F')", { expr = true, silent = true, desc = "Enhanced F motion" })
+nmap("t", "v:lua.QuickScopeWrap('t')", { expr = true, silent = true, desc = "Enhanced t motion" })
+nmap("T", "v:lua.QuickScopeWrap('T')", { expr = true, silent = true, desc = "Enhanced T motion" })
+
+-- ========== GIT (GITSIGNS) ========== --
+
+nmap("]h", function()
+	require("gitsigns").next_hunk()
+end, { desc = "Next hunk" })
+nmap("[h", function()
+	require("gitsigns").prev_hunk()
+end, { desc = "Previous hunk" })
+nmap("<leader>hs", function()
+	require("gitsigns").stage_hunk()
+end, { desc = "Stage hunk" })
+nmap("<leader>hr", function()
+	require("gitsigns").reset_hunk()
+end, { desc = "Reset hunk" })
+nmap("<leader>hS", function()
+	require("gitsigns").stage_buffer()
+end, { desc = "Stage buffer" })
+nmap("<leader>hu", function()
+	require("gitsigns").undo_stage_hunk()
+end, { desc = "Undo stage hunk" })
+nmap("<leader>hp", function()
+	require("gitsigns").preview_hunk()
+end, { desc = "Preview hunk" })

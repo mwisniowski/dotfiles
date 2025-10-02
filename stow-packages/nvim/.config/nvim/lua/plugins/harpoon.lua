@@ -18,7 +18,6 @@ return {
 		-- UI enhancements
 		harpoon:extend({
 			UI_CREATE = function(cx)
-				-- Add keymaps for opening files in splits/tabs from harpoon menu
 				vim.keymap.set("n", "<C-v>", function()
 					harpoon.ui:select_menu_item({ vsplit = true })
 				end, { buffer = cx.bufnr, desc = "Open in vertical split" })
