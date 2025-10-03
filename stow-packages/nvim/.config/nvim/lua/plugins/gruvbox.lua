@@ -18,6 +18,10 @@ return {
         vim.api.nvim_set_hl(0, "DiagnosticHint", { link = "GruvboxAqua" })
         vim.api.nvim_set_hl(0, "DiagnosticOk", { link = "GruvboxGreen" })
         vim.api.nvim_set_hl(0, "@string.documentation.python", { link = "Comment"})
+        -- Search highlight overrides
+        vim.api.nvim_set_hl(0, "Search", { link = "GruvboxYellowSign" }) -- All matches
+        vim.api.nvim_set_hl(0, "IncSearch", { fg = "#fabd2f", bg = "#282828", reverse = true }) -- GruvboxYellow on GruvboxBg0
+        vim.api.nvim_set_hl(0, "CurSearch", { fg = "#282828", bg = "#fabd2f", bold = true }) -- GruvboxBg0 on GruvboxYellow
       end)
       if not ok then
         vim.notify("Failed to load Gruvbox or apply highlights", vim.log.levels.ERROR)
