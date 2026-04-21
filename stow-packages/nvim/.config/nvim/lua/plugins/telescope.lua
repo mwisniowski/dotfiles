@@ -11,6 +11,7 @@ return {
             horizontal = { preview_width = 0.5 },
           },
           file_ignore_patterns = { ".git/", "node_modules" },
+          preview = { treesitter = false },
           mappings = {
             i = {
               ["<Tab>"]   = actions.toggle_selection + actions.move_selection_worse,
