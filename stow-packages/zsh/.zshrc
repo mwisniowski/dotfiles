@@ -74,12 +74,14 @@ plugins=(
     aliases
     direnv
     fzf
+    fzf-git
     gh
     git
     httpie
     starship
     nvm
     z
+    mise
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -129,3 +131,14 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 . "$HOME/.local/bin/env"
 export PATH="$PATH:/Users/mwis/.bun/bin"
+
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+
+# bun completions
+[ -s "/Users/mwis/.bun/_bun" ] && source "/Users/mwis/.bun/_bun"
+
+# worktrunk
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+eval "$(tv init zsh)"

@@ -112,7 +112,7 @@ format = 'via [$symbol$stack]($style) '
 [python]
 symbol = " "
 style = "bold green"
-python_binary = ["uv run python", "python3", "python"]
+python_binary = [".venv/bin/python", "uv run python", "python"]
 
 [rlang]
 symbol = "ﳒ "

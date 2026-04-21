@@ -50,4 +50,5 @@ return {
       })
     end,
   },
+  {"JoosepAlviste/nvim-ts-context-commentstring"}
 }
