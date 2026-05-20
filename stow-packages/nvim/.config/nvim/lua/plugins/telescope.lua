@@ -17,11 +17,13 @@ return {
               ["<Tab>"]   = actions.toggle_selection + actions.move_selection_worse,
               ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
               ["<C-q>"]   = actions.smart_send_to_qflist + actions.open_qflist,
+              ["<C-l>"]   = actions.toggle_all,
             },
             n = {
               ["<Tab>"]   = actions.toggle_selection + actions.move_selection_worse,
               ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
               ["<C-q>"]   = actions.smart_send_to_qflist + actions.open_qflist,
+              ["<C-l>"]   = actions.toggle_all,
             }
           }
         },

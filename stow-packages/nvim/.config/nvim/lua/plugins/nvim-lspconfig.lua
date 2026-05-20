@@ -20,7 +20,7 @@ return {
 					"lua_ls",
 					"basedpyright",
 					"ruff",
-					"sqlls",
+					"postgres_lsp",
 					"yamlls",
 					"tailwindcss",
 					"ts_ls",
