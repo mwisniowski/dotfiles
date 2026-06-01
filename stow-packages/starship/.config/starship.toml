@@ -64,6 +64,12 @@ tag_symbol = " tag "
 # deleted = "x"
 
 [gcloud]
+# Only show the cloud when a GCP context is explicitly set in the environment.
+# Without this, the module shows everywhere just because ~/.config/gcloud exists.
+# CLOUDSDK_ACTIVE_CONFIG_NAME also tells gcloud which config to use, and
+# GOOGLE_CLOUD_PROJECT is read by GCP client libraries — set either per-project
+# (e.g. via direnv .envrc) to light up the prompt.
+detect_env_vars = ["CLOUDSDK_ACTIVE_CONFIG_NAME", "GOOGLE_CLOUD_PROJECT"]
 symbol = "  "
 
 [golang]
