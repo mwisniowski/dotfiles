@@ -80,8 +80,8 @@ plugins=(
     httpie
     starship
     nvm
-    z
     mise
+    zoxide
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -141,4 +141,6 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 # worktrunk
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
-eval "$(tv init zsh)"
+# television (tv) shell integration — disabled for now; it rebinds ^R/^T away
+# from the fzf plugin. Re-enable when ready: uncomment the line below.
+# eval "$(tv init zsh)"
