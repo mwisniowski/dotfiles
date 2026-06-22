@@ -26,6 +26,9 @@ stow -t "$HOME" git
 echo "Installing zsh configuration..."
 stow -t "$HOME" zsh
 
+echo "Installing starship configuration..."
+stow -t "$HOME" starship
+
 # --no-folding keeps ~/.config/hunk a real directory so that hunk's runtime
 # state.json (written next to config.toml) is not symlinked into this repo.
 echo "Installing hunk configuration..."
