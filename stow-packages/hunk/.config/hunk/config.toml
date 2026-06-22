@@ -1,0 +1,73 @@
+theme = "custom"
+
+# Gruvbox Dark (Medium contrast), matched to the morhetz/gruvbox neovim setup.
+# hunk has no built-in gruvbox, so this reconstructs it as a custom theme.
+# All color values must be 6-digit #rrggbb hex (hunk rejects names / shorthand).
+# To switch contrast, change `background` (and optionally `contextBg`):
+#   hard = #1d2021   medium = #282828 (default)   soft = #32302f
+[custom_theme]
+base  = "zenburn"            # warm dark base; only supplies appearance, all colors overridden below
+label = "Gruvbox Dark Medium"
+
+# Surfaces
+background   = "#282828"     # bg0
+panel        = "#32302f"     # bg0_soft (sidebar / raised)
+panelAlt     = "#3c3836"     # bg1
+border       = "#504945"     # bg2
+lineNumberBg = "#1f2120"     # ~bg0_hard (darker gutter)
+lineNumberFg = "#7c6f64"     # fg4
+
+# Text & accent
+text        = "#ebdbb2"      # fg1
+muted       = "#928374"      # gray
+accent      = "#fabd2f"      # yellow (matches neovim Search highlight)
+accentMuted = "#d79921"      # neutral yellow
+
+# Added (green; addedBg mirrors neovim DiffAdd)
+addedBg        = "#323300"
+addedContentBg = "#4d4d00"
+addedSignColor = "#b8bb26"
+badgeAdded     = "#b8bb26"
+
+# Removed (red)
+removedBg        = "#3c2828"
+removedContentBg = "#5a2e2c"
+removedSignColor = "#fb4934"
+badgeRemoved     = "#fb4934"
+
+# Context (unchanged lines)
+contextBg        = "#282828"
+contextContentBg = "#32302f"
+
+# Moved (movedAddedBg mirrors neovim DiffChange)
+movedAddedBg   = "#1f2e29"
+movedRemovedBg = "#3a2a3a"
+
+# Selection (mirrors neovim Visual) and neutral badge
+selectedHunk = "#504945"
+badgeNeutral = "#a89984"
+
+# File-status labels
+fileNew       = "#b8bb26"    # green
+fileDeleted   = "#fb4934"    # red
+fileRenamed   = "#fabd2f"    # yellow
+fileModified  = "#d3869b"    # purple
+fileUntracked = "#83a598"    # blue
+
+# Agent / AI notes
+noteBorder          = "#d3869b"
+noteBackground      = "#32282f"
+noteTitleBackground = "#3c2f38"
+noteTitleText       = "#fbf1c7"
+
+# Syntax tokens (morhetz/gruvbox mapping)
+[custom_theme.syntax]
+default     = "#ebdbb2"      # fg1
+keyword     = "#fb4934"      # red
+string      = "#b8bb26"      # green
+comment     = "#928374"      # gray
+number      = "#d3869b"      # purple
+function    = "#b8bb26"      # green (GruvboxGreenBold)
+property    = "#83a598"      # blue (identifiers/fields)
+type        = "#fabd2f"      # yellow
+punctuation = "#a89984"      # fg4

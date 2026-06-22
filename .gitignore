@@ -1,0 +1,2 @@
+# hunk writes runtime state next to its config; never track it.
+stow-packages/hunk/.config/hunk/state.json

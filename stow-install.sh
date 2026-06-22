@@ -26,6 +26,11 @@ stow -t "$HOME" git
 echo "Installing zsh configuration..."
 stow -t "$HOME" zsh
 
+# --no-folding keeps ~/.config/hunk a real directory so that hunk's runtime
+# state.json (written next to config.toml) is not symlinked into this repo.
+echo "Installing hunk configuration..."
+stow --no-folding -t "$HOME" hunk
+
 echo "Stow installation complete!"
 echo "Run ./setup-tools.sh to install OS-specific dependencies"
 echo "Run ./post-install.sh to bootstrap plugins"
