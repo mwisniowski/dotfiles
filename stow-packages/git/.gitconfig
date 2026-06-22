@@ -1,7 +1,7 @@
 [user]
 	name = Matthias Wisniowski
 	email = matthias.wisniowski@gmail.com
-  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHTxpr2RJWVL955NPv/V7swD+xO3+iADhCeyTwITwJAp
+  signingkey = /Users/mwis/.ssh/id_ed25519
 [merge]
 	tool = diffconflicts
 [mergetool]
@@ -14,7 +14,7 @@
 [gpg]
   format = ssh
 [gpg "ssh"]
-  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+	allowedSignersFile = /Users/mwis/.config/git/allowed_signers
 [commit]
 	gpgsign = true
 	verbose = true
@@ -25,3 +25,11 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[pull]
+	ff = only
+[alias]
+	cleanup-squashed = "\\!merged=$(gh pr list --state merged --json headRefName | jq -r \".[].headRefName\" | grep -E \"^(feat|fix|hotfix)/\"); local=$(git branch --format=\"%(refname:short)\"); echo \"$merged\" | grep -F -x -f <(echo \"$local\") | xargs -r -I {} sh -c \"echo \\\"Deleting: {}\\\"; git branch -D {}\""
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
